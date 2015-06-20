@@ -13,10 +13,10 @@
           <form method='post' action='testreg.php'>
             <table>
               <tr>
-                <td colspan='2'><input type='text' id='login' value='Логин' name='login'></td>
+                <td colspan='2'><input type='text' id='login' placeholder='Логин' name='login'></td>
               </tr>
                 <tr>
-                <td colspan='2'><input type='password' id='password' value='Пароль' name='password'></td>
+                <td colspan='2'><input type='password' id='password' placeholder='Пароль' name='password'></td>
               </tr>
               <tr>
                 <td align="left"><input type='submit' name='submit' class='button' value='Вход'></td>
@@ -29,7 +29,7 @@
       <div id="registration" >
       <br>
       <center><table>
-        <form action="save_user.php" method="post" enctype="multipart/form-data">
+        <form action="php/save/save_user.php" method="post" enctype="multipart/form-data">
         <tr>
           <td class="inscriptions">Логин:</td>
           <td><input class="field" type="text" size="30" maxlength="16" name="login" ></td>

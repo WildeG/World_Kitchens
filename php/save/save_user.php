@@ -1,5 +1,5 @@
 ﻿<?php
-  include_once("bd.php");
+  include_once("/../../bd.php");
   if (isset($_POST['submit'])){
     if(empty($_POST['login']))  {
       echo '<br><font color="red"><img border="0" src="error.gif" align="middle"> Введите логин! </font>';
