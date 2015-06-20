@@ -1,0 +1,112 @@
+body { 
+  background: url(../image/fon.jpg);  
+}
+.no_transparency {
+  opacity: 1;  
+}
+.transparency {
+  opacity: 0.5;
+}
+.field {
+  text-align: left;
+  background: rgba(250,210,1,0.5);
+  color: #E60000;
+  text-shadow: 0 0 4px rgba(0,0,0,0.3);
+  border-color:#ffd700;
+  font-size: 20;
+}
+.button {
+  background: rgba(250,210,1,0.5);
+  color: #E60000;
+  text-shadow: 0 0 4px rgba(0,0,0,0.3);
+  border-color:#ffd700;
+}
+.inscriptions {
+	text-align: right;
+  	color: #E60000;
+  	text-shadow: 0 0 4px rgba(0,0,0,0.3);
+  	font-size: 19;
+}
+#name {
+  position: absolute;
+  width: 600px;
+  height: 100px;
+}
+#white {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius:10px;
+  -webkit-border-radius:6px;
+  -moz-border-radius:5px;
+  -khtml-border-radius:10px;
+}
+#main {  
+  position: absolute;  
+  left: 50%;
+  width: 800px;
+  height: 500px;
+  margin-left: -400px;
+}
+#registration {
+	position: absolute; /* Абсолютное позиционирование блока */
+	left:10px;
+  	top: 200px; /* Отступ в процентах от верхнего края окна */
+	width: 780px; /* Ширина блока */
+	height: 570px; /* Высота блока */	
+}
+#home_b {
+  	width: 30px; 
+	height: 30px;	
+}
+#entrance {
+  	top: 50%; /* Отступ в процентах от верхнего края окна */
+	left: 50%; /* Отступ в процентах от левого края окна */
+	width: 200px; /* Ширина блока */
+	height: 150px; /* Высота блока */
+	position: absolute; /* Абсолютное позиционирование блока */
+	margin-top: -75px; /* Отрицательный отступ от верхнего края страницы, должен равняться половине высоты блока со знаком минус */
+	margin-left: -100px; /* Отрицательный отступ от левого края страницы, должен равняться половине высоты блока со знаком минус */
+  	text-align: center;
+}
+#lenta {
+  position: absolute;
+  top: 100px;
+  width: 600px;
+  left: 100px;
+}
+#user {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  margin-left: 220px; 
+}
+#login {
+  width: 170px;
+  text-align: right;
+  background: rgba(250,210,1,0.5);
+  color: #E60000;
+  text-shadow: 0 0 4px rgba(0,0,0,0.3);
+  border-color:#ffd700;
+}
+#password {
+  width: 170px;
+  text-align: right;
+  background: rgba(250,210,1,0.5);
+  color: #E60000;
+  text-shadow: 0 0 4px rgba(0,0,0,0.3);
+  border-color:#ffd700;
+}
+#copyright {
+	position:absolute;
+	top:500px;
+	left:50%;
+	margin-left: -250;
+	margin-top:-70px;
+	width: 500px;
+	height: 70px;
+	font-size: 10px;
+	text-align: center;
+	color: #E60000;
+	opacity: 0.6; 
+}

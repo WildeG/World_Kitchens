@@ -1,0 +1,29 @@
+﻿1. Страница с выборкой определенной кухни. Нажимаешь русская выдает рецепты русской кухни.
+
+
+view:
+<?php
+// Псевдокод, чтобы много не писать
+$kitchens = <request> SELECT id, name FROM kitchens
+
+foreach($kitchens as $k => $value) {
+ $id = $value['id']
+ $name = $value['name']
+
+ echo "<a href='show_kitchen.php?id={$id}'>{$name}</a>";
+}
+?>
+
+show_kitchen.php:
+<?php
+
+$id = $_GET['id'];
+
+$recepiets = <request> "SELECT * FROM recepiets WHERE kitchen_id = {$id}"
+
+foreach($recepiets as $key => $value) {
+ // Выводим все рецепты как тебе нужго
+}
+
+
+?>

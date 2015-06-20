@@ -1,0 +1,38 @@
+   h4 {
+    margin-bottom: 0px; /* Отрицательный отступ между заголовком и текстом */
+    text-align: center;
+   }
+   a {
+   	text-indent: 20px;
+   }
+.image_news {
+	height: 80px;
+	width: 80px;
+  	border-radius:10px;
+	-webkit-border-radius:6px;
+  	-moz-border-radius:5px;
+  	-khtml-border-radius:10px;
+  	border: 4px double #FAD201;
+  	margin: 6px 6px 6px 6px;
+}
+.subtitle {
+	margin-left: 10px;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-right: 10px; 
+}
+#news {
+  box-shadow: 0 0 10px rgba(199,166,0,1); 
+	width: 500px;
+	height: 100px;
+	background: rgba(250,210,1,0.5);
+	color: #E60000;
+  	text-shadow: 0 0 4px rgba(0,0,0,0.3);
+  	border-radius:10px;
+  	-webkit-border-radius:6px;
+  	-moz-border-radius:5px;
+  	-khtml-border-radius:10px;
+}
+#contents {
+	margin-left: 10px;
+}
