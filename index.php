@@ -12,21 +12,27 @@ $sel = "SELECT * FROM `kitchens`";
 $query = mysql_query($sel);
 ?>
 <html>
-	<head><?php $link ?>
+	<head>
+
 		<link href=<?php $link ?>"image/system/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
 		<link href=<?php $link ?>"css/style.css" rel="stylesheet" type="text/css" >
 		<link href=<?php $link ?>"css/owl.carousel.css" rel="stylesheet">
 		<link rel="stylesheet" href=<?php $link ?>"css/homepages.css" type="text/css">
+
 		<script src=<?php $link ?>"script/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src=<?php $link ?>"script/jquery.waterwheelCarousel.min.js" type="text/javascript"></script>
+
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 		<title>World Kitchens</title>
+
 	</head>
 	<body>
 		<div id="main">
-			<!- Шапка сайта ->
+			<!-- Шапка сайта -->
 			<div id="hat">
-				<a href="index.php">
+<!-- 				<a href="index.php">
 				<svg>
 				<defs>
 					<path id="textpath" fill="none" stroke="#000000" d="M0.057,0.024c0,0,10.99,51.603,102.248,51.603c91.259,0,136.172,53.992,136.172,53.992"/>
@@ -38,7 +44,7 @@ $query = mysql_query($sel);
 						</textPath>
 					</text>
 				</svg>
-				</a>
+				</a> -->
 				<center><a href="index.php"><h1 title="Перейти на главную">World's Kitchens</h1></a></center>
 			</div>
 			<?php
@@ -86,7 +92,7 @@ $query = mysql_query($sel);
 							</div>
 						</div>";
 				} ?>
-			<!-Содержимое ->
+			<!--Содержимое -->
 				<center><img src="image/lenta.png"  /></center>
 				<div id="carousel">
 					<a href="feedback.php"><img src="image/countries/001.jpg" id="item-1" /></a>
@@ -103,9 +109,9 @@ $query = mysql_query($sel);
 								<?php
 								while($res = mysql_fetch_array($query)){
 								$sel2 = "SELECT * FROM users where id =".$res['id_autors']."";
-								$query2 = mysql_query($sel2);
-								$res2 = mysql_fetch_array($query2);                 
-									echo "<center><h2><b>Новости</h2><div id='news'>
+									$query2 = mysql_query($sel2);
+									$res2 = mysql_fetch_array($query2);                 
+										echo "<center><h2><b>Новости</h2><div id='news'>
 											<img align='left' class='image_news' src=".$res['image']." />
 											<h4>".$res['title']."</h4>
 											<table id='table_news'>

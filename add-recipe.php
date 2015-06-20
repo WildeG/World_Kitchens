@@ -82,12 +82,14 @@ $link = 'http://world-kitchens.com/';
                                     $sel = "SELECT * FROM `name_component`";
                                     $query = mysql_query($sel);
                                     if(mysql_num_rows($query)>0){
+                                      $test = "";
                                       while($res = mysql_fetch_array($query)){
-                                        echo "<option class='field_l' value='".$res['component']."'>".$res['component']."</option>";
+                                        $test .= "<option class='field_l' value='".$res['component']."'>".$res['component']."</option>";
                                       }
+                                      echo $test;
                                     }
-                                ?> 
-                            </select><br></a>
+                                ?>
+                                </select><br></a>
                         </div>
                         <div id="count_component">
                             Колличество<br>
@@ -95,6 +97,7 @@ $link = 'http://world-kitchens.com/';
                         </div>
                         <input id="add-component" class="button" type="button" value="Добавить" >
                         <input id="remove-component" class="button" type="button" value="Удалить" >
+
                     </div>
                     <div id="recipe">
                         Рецепт<br>
@@ -112,7 +115,7 @@ $link = 'http://world-kitchens.com/';
         <script>
             var counter = 1;
             $("#add-component").click(function(){
-                $("<a><select name='parts["+counter+"][name]'></select><br></a>").appendTo("#name_component");
+                $("<select name='parts["+counter+"][name]'><option class='field_l' value='Выбирете ингридиент'>Выбирете ингридиент</option><?php echo $test; ?></select><br>").appendTo("#name_component");
                 $("<a><input type='text' name='parts["+counter+"][count]'><br></a>").appendTo("#count_component");
                 counter++;
             });
