@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("bd.php");
-$link = 'http://world-kitchens.com/';
+$link = 'http://world-kitchens.loc/';
 ?>
 <html>
   <head>
@@ -23,7 +23,7 @@ $link = 'http://world-kitchens.com/';
       // Проверяем, пусты ли пересменные логина и id пользователя
       if (empty($_SESSION['login']) or empty($_SESSION['id'])) {
         // Если пусты, то мы не выводим ссылку
-        header('Location:'.$link.'.com/index.php');
+        header('Location:'.$link.'index.php');
       }
         else {
           // Если не пусты, то мы выводим ссылку
@@ -33,10 +33,10 @@ $link = 'http://world-kitchens.com/';
                   <ul class='menu'><center>
                     <li><input type='button' id='button_menu' value='Добавить'>
                       <ul>
-                        <li><a href='".$link.".com/add-news.php'>Новость</a></li>
-                        <li><a href='".$link.".com/add-recipe.php'>Рецепт</a></li>
-                        <li><a href='".$link.".com/php/add/add-kitchens.php'>Кухню</a></li>
-                        <li><a href='".$link.".com/php/add/add-component.php'>Ингридиенты</a></li>
+                        <li><a href='".$link."add-news.php'>Новость</a></li>
+                        <li><a href='".$link."add-recipe.php'>Рецепт</a></li>
+                        <li><a href='".$link."php/add/add-kitchens.php'>Кухню</a></li>
+                        <li><a href='".$link."php/add/add-component.php'>Ингридиенты</a></li>
                       </ul>
                     </li></center>
                   </ul>

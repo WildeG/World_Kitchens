@@ -1,7 +1,7 @@
 <?php
 session_start();
 include ('bd.php');
-$link = 'http://world-kitchens.com/';
+$link = 'http://world-kitchens.loc/';
 $num_elements = 1;
 
 if ((mysql_result(mysql_query("SELECT COUNT(*) FROM `news`"),0,0))>2) {
