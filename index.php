@@ -13,85 +13,136 @@ $query = mysql_query($sel);
 ?>
 <html>
 	<head>
-
+		<!-- Иконка сайта -->
 		<link href=<?php $link ?>"image/system/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
 		<link href=<?php $link ?>"css/style.css" rel="stylesheet" type="text/css" >
-		<link href=<?php $link ?>"css/owl.carousel.css" rel="stylesheet">
 		<link rel="stylesheet" href=<?php $link ?>"css/homepages.css" type="text/css">
-
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> <!--  Иконки возле меню  -->
+		
+		<!-- Скрипты для подключения карусели картинок -->
 		<script src=<?php $link ?>"script/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src=<?php $link ?>"script/jquery.waterwheelCarousel.min.js" type="text/javascript"></script>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 		<title>World Kitchens</title>
-
 	</head>
 	<body>
-		<div id="main">
+	<div id="body">	
+		<div id="head">
 			<!-- Шапка сайта -->
 			<div id="hat">
-<!-- 				<a href="index.php">
-				<svg>
-				<defs>
-					<path id="textpath" fill="none" stroke="#000000" d="M0.057,0.024c0,0,10.99,51.603,102.248,51.603c91.259,0,136.172,53.992,136.172,53.992"/>
-				</defs>
-				<use xlink:href="#textpath"/>
-					<text x="10" y="100">
-						<textPath xlink:href="#textpath" font-family="Pacifico">
-							World's Kitchens
-						</textPath>
-					</text>
-				</svg>
-				</a> -->
 				<center><a href="index.php"><h1 title="Перейти на главную">World's Kitchens</h1></a></center>
 			</div>
-			<?php
+		</div>
+		<div id='left_panel'>
+			<div id="left_bord">
+			<h2 style="margin-top:0px;">Меню</h2>
+			</div>
+		<?php
 			// Проверяем, пусты ли пересменные логина и id пользователя
 			if (empty($_SESSION['login']) or empty($_SESSION['id'])) {
-				// Если пусты, то мы не выводим ссылку
+					?>
+					<div>
+						<ul id="accordion" class="accordion">
+						<li>
+							<div class="link">Кухни<i class="fa fa-chevron-down"></i></div>
+							<ul class="submenu">
+								<?php
+								while($res = mysql_fetch_array($query)){
+									echo "<li><a href='".$link."kitchens.php?kitchens=".$res['title']."'>".$res['title']."</a></li>";
+								}
+								?>
+							</ul>
+						</li>
+						<li>
+							<div class="link"><a href="#">Блюда</a></div>
+						</li>
+						<li>
+							<div class="link"><a href="#">Поиск</a></div>
+						</li>
+						<li>
+							<div class="link"><a href="#">Блюдо дня</a></div>
+						</li>
+						<li>
+							<div class="link"><a href="#">Новости</a></div>
+						</li>
+						</ul>
+					</div>
+					<div id='user'>
+							 <form method='post' action='testreg.php'>
+								<table>
+									<tr>
+										<td colspan='2'><input type='text' class='verification' size='25' maxlength='25' placeholder='Логин' name='login'></td>
+									</tr>
+									<tr>
+										<td colspan='2'><input type='password' class='verification' size='25' maxlength='25' placeholder='Пароль' name='password'></td>
+									</tr>
+									<tr>
+										<td><input type='submit' name='submit' class='button' value='Вход'></td>
+										<td><a href='reg.php'><input type='button' class='button' value='Регистрация'></a></td>
+									</tr>              
+								</table>
+							</form>
+						</div>
+					</div> 
+					<?php ;
 			}
 				else {
-					// Если не пусты, то мы выводим ссылку
-					echo 
-						"<div id='button_panel'>
-							<div class='owl-carousel'>
-									<ul class='menu'><center>
-										<li><input type='button' id='button_menu' value='Добавить'>
-											<ul> 
-												<li><a href='".$link."add-news.php'>Новость</a></li> 
-												<li><a href='".$link."add-recipe.php'>Рецепт</a></li> 
-												<li><a href='".$link."php/add/add-kitchens.php'>Кухню</a></li> 
-												<li><a href='".$link."php/add/add-component.php'>Ингридиенты</a></li> 
-											</ul> 
-										</li></center> 
-									</ul>
-									<ul class='menu'><center>
-										<li><input type='button' id='button_menu' value='Кухни'>
-											<ul>";
-									while($res = mysql_fetch_array($query)){
-												echo "<li><a href='".$link."kitchens.php?kitchens=".$res['title']."'>".$res['title']."</a></li>";
-											}
-						  echo "		</ul> 
-									</li></center> 
-								</ul>
-								<input type='button' id='button_menu' value='Блюда' class='no_transparency'>
-								<input type='button' id='button_menu' value='Поиск' class='no_transparency'>
-								<input type='button' id='button_menu' value='Блюдо дня' class='no_transparency'>
-								<input type='button' id='button_menu' value='Новости' class='no_transparency'>
-									<ul class='menu'><center>
-										<li><input type='button' id='button_menu' value='Избранное'>
-											<ul> 
-												<li><a href='".$link."add-news.php'>Хочу приготовить</a></li> 
-												<li><a href='".$link."add-recipe.php'>Уже готовил</a></li> 
-												<li><a href='".$link."php/add/add-kitchens.php'>Мои рецепты</a></li> 
-											</ul> 
-										</li></center> 
-									</ul>
-							</div>
-						</div>";
-				} ?>
+					// Если не пусты, то мы выводим ссылку ?>
+					<div>
+						<ul id="accordion" class="accordion">
+						<li>
+							<div class="link">Добавить<i class="fa fa-chevron-down"></i></div>
+							<ul class="submenu"><?php echo "
+								<li><a href='".$link."add-news.php'>Новость</a></li>
+								<li><a href='".$link."add-recipe.php'>Рецепт</a></li>
+								<li><a href='".$link."php/add/add-kitchens.php'>Кухню</a></li>
+								<li><a href='".$link."php/add/add-component.php'>Ингридиенты</a></li>
+							</ul>";?>
+						</li>
+						<li>
+							<div class="link">Кухни<i class="fa fa-chevron-down"></i></div>
+							<ul class="submenu">
+								<?php
+								while($res = mysql_fetch_array($query)){
+									echo "<li><a href='".$link."kitchens.php?kitchens=".$res['title']."'>".$res['title']."</a></li>";
+								}
+								?>
+							</ul>
+						</li>
+						<li>
+							<div class="link"><a href="#">Блюда</a></div>
+						</li>
+						<li>
+							<div class="link"><a href="#">Поиск</a></div>
+						</li>
+						<li>
+							<div class="link"><a href="#">Блюдо дня</a></div>
+						</li>
+						<li>
+							<div class="link"><a href="#">Новости</a></div>
+						</li>
+						<li>
+							<div class="link">Избранное<i class="fa fa-chevron-down"></i></div>
+							<ul class="submenu">
+								<li><a href='".$link."add-news.php'>Хочу приготовить</a></li> 
+								<li><a href='".$link."add-recipe.php'>Уже готовил</a></li>
+								<li><a href='".$link."php/add/add-kitchens.php'>Мои рецепты</a></li>
+							</ul>
+						</li>
+						</ul>
+					</div>
+					
+					<?php 
+										echo 
+					"	<div id='user'><center>
+							<a href='user.php' title='Редактировать информацию о себе''><h3>".$_SESSION['family']."&nbsp".$_SESSION['name']."</h3></a>
+							<a href='exit.php' >(Выход)</a></center>
+						</div></div>";} ?>
+		
+		<div id="main">
 			<!--Содержимое -->
 				<center><img src="image/lenta.png"  /></center>
 				<div id="carousel">
@@ -131,15 +182,39 @@ $query = mysql_query($sel);
 						}
 					?>
 				</div> 
-			<!- Подвал ->
-			<center><br><br><div id="copyright">
-			<strong>&copy 2015. Михайлов Олег. Все права защищены.</strong>
-			<p>Копирование материалов и использование их в любой форме, в том 
-			числе и в электронных СМИ, возможны только с письменного разрешения 
-			администрации сайта. При этом ссылка на сайт обязательна.</p>
-			</div></center>  
+				<!- Подвал ->
+				<center>
+				<br><br>
+				<div id="copyright">
+					<strong>&copy 2015. Михайлов Олег. Все права защищены.</strong>
+					<p>Копирование материалов и использование их в любой форме, в том 
+					числе и в электронных СМИ, возможны только с письменного разрешения 
+					администрации сайта. При этом ссылка на сайт обязательна.</p>
+				</div>
+				</center>
+			</div>  
 		</div>
 		<script type="text/javascript">
+			// Кнопка вверх
+			$(function() {
+			var Accordion = function(el, multiple) {
+			this.el = el || {};
+			this.multiple = multiple || false;
+			var links = this.el.find('.link');
+			links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+			}
+			Accordion.prototype.dropdown = function(e) {
+			var $el = e.data.el;
+			$this = $(this),
+			$next = $this.next();
+			$next.slideToggle();
+			$this.parent().toggleClass('open');
+			if (!e.data.multiple) {
+			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+			};
+			}
+			var accordion = new Accordion($('#accordion'), false);
+			});
 			$(document).ready(function(){
 				$('.owl-carousel').owlCarousel();
 			});
@@ -161,53 +236,6 @@ $query = mysql_query($sel);
 					$('#callback-output').prepend('clickedCenter: ' + $item.attr('id') + '<br/>');
 				}
 			});
-			$('#prev').bind('click', function () {
-				carousel.prev();
-				return false
-			});
-			$('#next').bind('click', function () {
-				carousel.next();
-				return false;
-			});
-			$('#reload').bind('click', function () {
-				newOptions = eval("(" + $('#newoptions').val() + ")");
-				carousel.reload(newOptions);
-				return false;
-			});
 		</script>
-		<script src="script/owl.carousel.js"></script>
-		<script src="script/owl.carousel.min.js"></script>
-		<?php
-			// Проверяем, пусты ли пересменные логина и id пользователя
-			if (empty($_SESSION['login']) or empty($_SESSION['id'])) {
-				echo 
-"<div id='band'>
-<div id='user'>
-	 <form method='post' action='testreg.php'>
-		<table>
-			<tr>
-				<td colspan='2'><input type='text' class='verification' size='25' maxlength='25' placeholder='Логин' name='login'></td>
-			</tr>
-			<tr>
-				<td colspan='2'><input type='password' class='verification' size='25' maxlength='25' placeholder='Пароль' name='password'></td>
-			</tr>
-			<tr>
-				<td><input type='submit' name='submit' class='button' value='Вход'></td>
-				<td><a href='reg.php'><input type='button' class='button' value='Регистрация'></a></td>
-			</tr>              
-		</table>
-	</form>
-</div>
-</div>"; }
-else {
-					// Если не пусты, то мы выводим ссылку
-					echo 
-		"<div id='band'>
-			<div id='user'><center>
-				<a href='user.php' title='Редактировать информацию о себе''>".$_SESSION['family']."&nbsp".$_SESSION['name']."</a>
-				<a href='exit.php' >(Выход)</a></center>
-			</div>
-		</div> ";
-				} ?>
 	</body>
 </html>

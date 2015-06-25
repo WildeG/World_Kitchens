@@ -50,78 +50,91 @@ $link = 'http://world-kitchens.loc/';
             </div>";
         } ?>
       <!--Содержимое -->
-
-            <center><h2><b>Добавить рецепт</h2>
+            <center><h2>Добавить рецепт</h2>
                 <center><form action="test-form.php" method="post" enctype="multipart/form-data">
                 <div>
-                    <div id="name_recipe">
-                        Название<br>
-                        <input class="field" type="text" maxlength="40" name="title" >
+                    <div class="blok" style="margin-bottom: 0px;">
+                        <a class="inscriptions">Название</a><br>
+                        <input class="field_rec" type="text" maxlength="40" name="title" style='width: 550px;' placeholder='Введите название рецепта' >
                     </div>
-                    <div id="kitchens">
-                        Кухня<br>
-                        <?php
-                            $num_elements = 4;
-                            $start = 0;
-                            $sel = "SELECT * FROM `kitchens` LIMIT ".$start.", ".$num_elements;
-                            $query = mysql_query($sel);
-                            if(mysql_num_rows($query)>0){
-                                while($res = mysql_fetch_array($query)){
-                                  echo "<input type='radio' name='kitchens' value='".$res['title']."'>".$res['title']."<br>";
-                                }
-                              }
-                        ?>
-                    </div>
-                    <div id="component">
-                        Ингридиенты
-                        <div id="name_component">
-                            Название ингридиента<br>
-                            <a><select name="parts[0][name]">
-                                <option class='field_l' value='Выбирете ингридиент'>Выбирете ингридиент</option>
+                    <table style="text-align:center;">
+                    <tr>
+                    <td>
+                        <div id="news">
+                          <div class="block_min">
+                              <a class="inscriptions">Кухня</a><br>
+                              <select name="kitchens" class='field_l' style="width: 235px;">
+                              <?php
+                                  $num_elements = 4;
+                                  $start = 0;
+                                  $sel = "SELECT * FROM `kitchens` LIMIT ".$start.", ".$num_elements;
+                                  $query = mysql_query($sel);
+                                  if(mysql_num_rows($query)>0){
+                                      while($res = mysql_fetch_array($query)){
+                                           echo "<option value='".$res['title']."'>".$res['title']."</option>";
+                                      }
+                                    }
+                              ?>
+                              </select><br>
+                          </div>
+                          </td><td>
+                          <div class="block_min">
+                            <a class="inscriptions">Изображение<sup>*</sup></a><br>
+                            <input class="inscriptions_min" name="image" type="file" accept="image/jpeg,image/png,image/gif">
+                            <br><a class='inscriptions_min'>Необязательное поле</a><br>
+                          </div>
+                          
+                      </div>
+                      <td>
+                     </tr>         
+                    </table>
+                    <div class="blok">
+                        <input id="add-component" class="plus" type="button" value="+" ><a class="inscriptions">Ингридиенты</a><input id="remove-component" class="plus" type="button" value="-" >
+                        <table style='text-align:center'>
+                        <tr>
+                        <td id="name_component">
+                            <strong class='inscriptions_min'>Название ингридиента</strong><br>
+                            <p><select name="parts[0][name]" class='field_l'>
+                                <option value='Выбирите ингридиент'>Выбирите ингридиент</option>
                                 <?php
                                     $sel = "SELECT * FROM `name_component`";
                                     $query = mysql_query($sel);
                                     if(mysql_num_rows($query)>0){
                                       $test = "";
                                       while($res = mysql_fetch_array($query)){
-                                        $test .= "<option class='field_l' value='".$res['component']."'>".$res['component']."</option>";
+                                        $test .= "<option value='".$res['component']."'>".$res['component']."</option>";
                                       }
                                       echo $test;
                                     }
                                 ?>
-                                </select><br></a>
-                        </div>
+                                </select></p>
+                        </td> 
+                        <td>
                         <div id="count_component">
-                            Колличество<br>
-                            <a><input type='text' name='parts[0][count]'><br></a>
+                            <strong class='inscriptions_min'>Колличество</strong><br>
+                            <p><input class='field_r' type='text' name='parts[0][count]' placeholder='Введите колличество'></p>
                         </div>
-                        <input id="add-component" class="button" type="button" value="Добавить" >
-                        <input id="remove-component" class="button" type="button" value="Удалить" >
-
+                        </div></td>
+                        </tr></table>
+                    </div>   
+                    <div class="blok">
+                        <a class="inscriptions">Рецепт</a><br>
+                        <textarea class="field_rec" maxlength="16600" name="recipe" style='width: 550px;' placeholder='Введите рецепт приготовления'></textarea>
                     </div>
-                    <div id="recipe">
-                        Рецепт<br>
-                        <textarea class="field" maxlength="16600" name="recipe"></textarea>
-                    </div>
-                    <div id="image">
-                        Изображение*<br>
-                        <input class="button" name="image" type="file" accept="image/jpeg,image/png,image/gif">
-                    </div>
-                    * - Помечены не обязательные поля<br>
-                    <input class="button" type="submit" value="Добавить рецепт" name="submit" >
+                    <input id="add_button" type="submit" value="Добавить рецепт" name="submit" >
                 </div>
                 </form></center>
         </center>
         <script>
             var counter = 1;
             $("#add-component").click(function(){
-                $("<select name='parts["+counter+"][name]'><option class='field_l' value='Выбирете ингридиент'>Выбирете ингридиент</option><?php echo $test; ?></select><br>").appendTo("#name_component");
-                $("<a><input type='text' name='parts["+counter+"][count]'><br></a>").appendTo("#count_component");
+                $("<p><select class='field_l' name='parts["+counter+"][name]'><option value='Выбирете ингридиент'>Выбирете ингридиент</option><?php echo $test; ?></select></p>").appendTo("#name_component");
+                $("<p><input class='field_r' type='text' name='parts["+counter+"][count]' placeholder='Введите колличество'></p>").appendTo("#count_component");
                 counter++;
             });
             $("#remove-component").click(function(){
-              $("#count_component a:last-child").remove()
-              $("#name_component a:last-child").remove()
+              $("#name_component p:last-child").remove()
+              $("#count_component p:last-child").remove()
             });
         </script>
 <!-- Подвал -->
